@@ -44,7 +44,7 @@ public class QueryParser implements QueryParserConstants {
    *  @param analyzer   used to find terms in the query text.
    */
   static public Query parse(String query, String field, Analyzer analyzer)
-       throws ParseException {
+          throws ParseException, org.apache.lucene.analysis.standard.ParseException {
     QueryParser parser = new QueryParser(field, analyzer);
     return parser.parse(query);
   }
@@ -67,7 +67,7 @@ public class QueryParser implements QueryParserConstants {
    * <a href="lucene.search.Query.html">Query</a>.
    *  @param query	the query string to be parsed.
    */
-  public Query parse(String query) throws ParseException {
+  public Query parse(String query) throws ParseException, org.apache.lucene.analysis.standard.ParseException {
     ReInit(new StringReader(query));
     return Query(field);
   }
@@ -104,7 +104,7 @@ public class QueryParser implements QueryParserConstants {
     clauses.addElement(new BooleanClause(q, required, prohibited));
   }
 
-  private Query getFieldQuery(String field, Analyzer analyzer, String queryText) {
+  private Query getFieldQuery(String field, Analyzer analyzer, String queryText) throws org.apache.lucene.analysis.standard.ParseException {
     // Use the analyzer to get all the tokens, and then build a TermQuery,
     // PhraseQuery, or nothing based on the term count
 
@@ -215,7 +215,7 @@ public class QueryParser implements QueryParserConstants {
     throw new Error("Missing return statement in function");
   }
 
-  final public Query Query(String field) throws ParseException {
+  final public Query Query(String field) throws ParseException, org.apache.lucene.analysis.standard.ParseException {
   Vector clauses = new Vector();
   Query q;
   int conj, mods;
@@ -253,7 +253,7 @@ public class QueryParser implements QueryParserConstants {
     throw new Error("Missing return statement in function");
   }
 
-  final public Query Clause(String field) throws ParseException {
+  final public Query Clause(String field) throws ParseException, org.apache.lucene.analysis.standard.ParseException {
   Query q;
   Token fieldToken=null;
     if (jj_2_1(2)) {
@@ -284,7 +284,7 @@ public class QueryParser implements QueryParserConstants {
     throw new Error("Missing return statement in function");
   }
 
-  final public Query Term(String field) throws ParseException {
+  final public Query Term(String field) throws ParseException, org.apache.lucene.analysis.standard.ParseException {
   Token term, boost=null;
   boolean prefix = false;
   boolean wildcard = false;
