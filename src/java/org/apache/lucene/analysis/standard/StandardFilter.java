@@ -74,7 +74,7 @@ public final class StandardFilter extends TokenFilter
    * <p>Removes <tt>'s</tt> from the end of words.
    * <p>Removes dots from acronyms.
    */
-  public final org.apache.lucene.analysis.Token next() throws java.io.IOException {
+  public final org.apache.lucene.analysis.Token next() throws java.io.IOException, ParseException {
     org.apache.lucene.analysis.Token t = input.next();
 
     if (t == null)

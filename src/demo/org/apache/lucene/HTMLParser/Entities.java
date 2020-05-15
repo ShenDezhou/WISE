@@ -60,7 +60,7 @@ public class Entities {
   static final Hashtable decoder = new Hashtable(300);
   static final String[]  encoder = new String[0x100];
 
-  static final String decode(String entity) {
+  public static final String decode(String entity) {
     if (entity.charAt(entity.length()-1) == ';')  // remove trailing semicolon
       entity = entity.substring(0, entity.length()-1);
     if (entity.charAt(1) == '#') {

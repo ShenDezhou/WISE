@@ -54,6 +54,8 @@ package org.apache.lucene.analysis;
  * <http://www.apache.org/>.
  */
 
+import org.apache.lucene.analysis.standard.ParseException;
+
 /** Normalizes token text to lower case. */
 
 public final class LowerCaseFilter extends TokenFilter {
@@ -61,7 +63,7 @@ public final class LowerCaseFilter extends TokenFilter {
     input = in;
   }
 
-  public final Token next() throws java.io.IOException {
+  public final Token next() throws java.io.IOException, ParseException {
     Token t = input.next();
 
     if (t == null)

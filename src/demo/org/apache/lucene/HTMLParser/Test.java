@@ -72,8 +72,8 @@ class Test {
 
   public static void parse(File file) throws Exception {
     HTMLParser parser = new HTMLParser(file);
-    System.out.println("Title: " + Entities.encode(parser.getTitle()));
-    System.out.println("Summary: " + Entities.encode(parser.getSummary()));
+    System.out.println("Title: " + demo.HTMLParser.Entities.encode(parser.getTitle()));
+    System.out.println("Summary: " + demo.HTMLParser.Entities.encode(parser.getSummary()));
     LineNumberReader reader = new LineNumberReader(parser.getReader());
     for (String l = reader.readLine(); l != null; l = reader.readLine())
       System.out.println(l);

@@ -54,6 +54,8 @@ package org.apache.lucene.analysis;
  * <http://www.apache.org/>.
  */
 
+import org.apache.lucene.analysis.standard.ParseException;
+
 import java.io.IOException;
 
 /** A TokenStream enumerates the sequence of tokens, either from
@@ -70,7 +72,7 @@ import java.io.IOException;
 
 abstract public class TokenStream {
   /** Returns the next token in the stream, or null at EOS. */
-  abstract public Token next() throws IOException;
+  abstract public Token next() throws IOException, ParseException;
 
   /** Releases resources associated with this stream. */
   public void close() throws IOException {}
